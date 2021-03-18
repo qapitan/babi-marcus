@@ -63,7 +63,7 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         story:append(babi.Question(
             'yes_no',
             babi.Clause(world, truth_value, world:god(), actions.set,
-                   location2, '=', location1),
+                   random_actor2, 'is_in', location1),
             support1
         ))
         -- local clause = babi.Clause(
