@@ -50,11 +50,12 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         -- Marcus code here
         -- Pick two random actors and ask where he/she is
         local random_actor1 = random_actors[math.random(4)]
-        
+        local random_actor2 = random_actors[math.random(4)] 
+
         -- Stupid way of making sure the two actors are not
         -- the same
         while (random_actor2 == random_actor1) do 
-            local random_actor2 = random_actors[math.random(4)] 
+            random_actor2 = random_actors[math.random(4)] 
         end
 
         local location1, support1 = knowledge:current()[random_actor1]:get_value('is_in', true)
