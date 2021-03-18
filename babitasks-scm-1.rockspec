@@ -1,4 +1,4 @@
-package = 'babitasks2'
+package = 'babitasks'
 version = 'scm-1'
 source = {
   url = "git://github.com/qapitan/babi-marcus.git",
@@ -20,7 +20,7 @@ build = {
   type = "builtin",
   install = {
     bin = {
-      'babi-tasks'
+      'babi-tasks-marcus'
     }
   },
   copy_directories = {
