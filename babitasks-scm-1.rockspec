@@ -1,4 +1,4 @@
-package = 'babitasks'
+package = 'babitasks2'
 version = 'scm-1'
 source = {
   url = "git://github.com/qapitan/babi-marcus.git",
