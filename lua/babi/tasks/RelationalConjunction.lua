@@ -50,11 +50,11 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         -- Pick a random actor and ask where he/she is
         local random_actor = random_actors[math.random(4)]
         local value, support =
-            knowledge:current()[random_actor]:get_value('yes_no', true)
+            knowledge:current()[random_actor]:get_value('is_in', true)
         story:append(babi.Question(
             'eval',
             babi.Clause(world, true, world:god(), actions.set,
-                   random_actor, 'yes_no', value),
+                   random_actor, 'is_in', value),
             support
         ))
     end
