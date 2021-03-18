@@ -48,16 +48,19 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         story:extend(clauses)
 
         -- Marcus code here
-        -- Either true or false 
-        local affirmative = ({true, false})[math.random(2)]
-
         -- Pick two random actors and ask where he/she is
         local random_actor1 = random_actors[math.random(4)]
-        local random_actor2 = random_actors[math.random(4)]
+        
+        -- Stupid way of making sure the two actors are not
+        -- the same
+        while (random_actor2 == random_actor1) do 
+            local random_actor2 = random_actors[math.random(4)] 
+        end
+
         local location1, support1 = knowledge:current()[random_actor1]:get_value('is_in', true)
         local location2, support2 = knowledge:current()[random_actor2]:get_value('is_in', true)
 
-        local truth_value = (location1 == location2)
+        local truth_value = (location1 == location2) -- Are the two actors same place?
         --local value, support =
             --knowledge:current()[random_actor1]:get_value('is_in', true)
         story:append(babi.Question(
