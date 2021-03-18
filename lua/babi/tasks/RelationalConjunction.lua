@@ -56,12 +56,14 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         local random_actor2 = random_actors[math.random(4)]
         local location1, support1 = knowledge:current()[random_actor1]:get_value('is_in', true)
         local location2, support2 = knowledge:current()[random_actor2]:get_value('is_in', true)
+
+        local truth_value = (location1 == location2)
         --local value, support =
             --knowledge:current()[random_actor1]:get_value('is_in', true)
         story:append(babi.Question(
             'yes_no',
             babi.Clause(world, true, world:god(), actions.set,
-                   random_actor, 'is_in', value),
+                   random_actor2, 'is_in', location1),
             support1
         ))
     end
