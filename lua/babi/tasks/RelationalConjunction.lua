@@ -70,6 +70,6 @@ function RelationalConjunction:generate_story(world, knowledge, story)
     return story, knowledge
 end
 
-RelationalConjunction.DEFAULT_CONFIG = {conjunction = 0.9}
+RelationalConjunction.DEFAULT_CONFIG = {conjunction = 0.5}
 
 return RelationalConjunction
