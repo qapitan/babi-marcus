@@ -48,14 +48,19 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         local random_actor1 = random_actors[math.random(4)]
         local random_actor2 = random_actors[math.random(4)]
 
-        -- Stupid way of making sure the two actors are not
+        -- Stupid but working way of making sure the two actors are not
         -- the same
         while (random_actor2 == random_actor1) do
             random_actor2 = random_actors[math.random(4)]
         end
 
         local location1, support1 = knowledge:current()[random_actor1]:get_value("is_in", true)
-        local location2, support2 = knowledge:current()[random_actor2]:get_value("is_in", true)
+        --local location2, support2 = knowledge:current()[random_actor2]:get_value("is_in", true)
+        -- Only get location?
+        local location2 = knowledge:current()[random_actor2]:get_value("is_in", false)
+
+        -- local value, support =
+        -- knowledge:current()[random_actor]:get_value('is_in', true)
 
         local truth_value = (location1 == location2) -- Are the two actors same place?
 
@@ -63,7 +68,7 @@ function RelationalConjunction:generate_story(world, knowledge, story)
             babi.Question(
                 "yes_no",
                 babi.Clause(world, truth_value, world:god(), actions.set, random_actor2, "is_in", random_actor1),
-                Set{story[i], story[i]}
+                support1
             )
         )
     end
