@@ -11,21 +11,21 @@ local babi = require 'babi'
 local actions = require 'babi.actions'
 local utilities = require 'babi.utilities'
 
-local Conjunction = torch.class('babi.Conjunction', 'babi.Task', babi)
+local RelationalConjunction = torch.class('babi.RelationalConjunction', 'babi.Task', babi)
 
-function Conjunction:new_world()
+function RelationalConjunction:new_world()
     local world = babi.World()
     world:load((BABI_HOME or '') .. 'tasks/worlds/world_basic.txt')
     return world
 end
 
-function Conjunction:generate_story(world, knowledge, story)
+function RelationalConjunction:generate_story(world, knowledge, story)
     -- Find the actors and the locations in the world
     local actors = world:get_actors()
     local locations = world:get_locations()
 
     -- Our story will be 2 statements, 1 question, 5 times
-    for i = 1, 5 do
+    for i = 1, 10 do
         -- Select two actors and two locations
         local clauses = List()
         local random_actors = utilities.choice(actors, 2)
@@ -61,7 +61,7 @@ function Conjunction:generate_story(world, knowledge, story)
     return story, knowledge
 end
 
-Conjunction.DEFAULT_CONFIG = {conjunction=1.0}
+RelationalConjunction.DEFAULT_CONFIG = {RelationalConjunction=1.0}
 
 
-return Conjunction
+return RelationalConjunction
