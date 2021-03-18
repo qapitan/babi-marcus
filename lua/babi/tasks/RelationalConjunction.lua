@@ -47,16 +47,28 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         end
         story:extend(clauses)
 
-        -- Pick a random actor and ask where he/she is
-        local random_actor = random_actors[math.random(4)]
-        local value, support =
-            knowledge:current()[random_actor]:get_value('yes_no', true)
-        story:append(babi.Question(
-            'eval',
-            babi.Clause(world, true, world:god(), actions.set,
-                   random_actor, 'yes_no', value),
+        -- Find the actors of which we know the location
+        local known_actors = tablex.filter(
+            knowledge:current():find('is_in'),
+            function(entity) return entity.is_actor end
+        )
+        local affirmative = ({true, false})[math.random(2)]
+
+        -- Pick a random one and ask where he/she is
+        local random_actor = known_actors[math.random(#known_actors)]
+        local location, support =
+            knowledge:current()[random_actor]:get_value('is_in', true)
+        if not affirmative then
+            local options =
+                world:get_locations():clone():remove_value(location)
+            location = options[math.random(#options)]
+        end
+        story[i] = babi.Question(
+            'yes_no',
+            babi.Clause(world, affirmative, world:god(), actions.set,
+                   random_actor, 'is_in', location),
             support
-        ))
+        )
     end
     return story, knowledge
 end
