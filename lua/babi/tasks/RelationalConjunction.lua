@@ -48,15 +48,10 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         story:extend(clauses)
 
         -- Marcus code here
-        local known_actors = tablex.filter(
-                knowledge:current():find('is_in'),
-                function(entity) return entity.is_actor end
-            )
         -- Either true or false 
         local affirmative = ({true, false})[math.random(2)]
         -- Pick a random actor and ask where he/she is
         local random_actor = random_actors[math.random(4)]
-        local random_actor2 = random_actors[math.random(4)]
         local value, support =
             knowledge:current()[random_actor]:get_value('is_in', true)
         story:append(babi.Question(
