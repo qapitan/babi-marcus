@@ -25,7 +25,7 @@ function RelationalConjunction:generate_story(world, knowledge, story)
     local locations = world:get_locations()
 
     -- Our story will be 2 statements, 1 question, 5 times
-    for i = 1, 10 do
+    for i = 1, 5 do
         -- Select two actors and two locations
         local clauses = List()
         local random_actors = utilities.choice(actors, 2)
@@ -50,11 +50,11 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         -- Pick a random actor and ask where he/she is
         local random_actor = random_actors[math.random(4)]
         local value, support =
-            knowledge:current()[random_actor]:get_value('is_in', true)
+            knowledge:current()[random_actor]:get_value('yes_no', true)
         story:append(babi.Question(
             'eval',
             babi.Clause(world, true, world:god(), actions.set,
-                   random_actor, 'is_in', value),
+                   random_actor, 'yes_no', value),
             support
         ))
     end

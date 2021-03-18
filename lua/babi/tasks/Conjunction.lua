@@ -25,7 +25,7 @@ function Conjunction:generate_story(world, knowledge, story)
     local locations = world:get_locations()
 
     -- Our story will be 2 statements, 1 question, 5 times
-    for i = 1, 10 do
+    for i = 1, 5 do
         -- Select two actors and two locations
         local clauses = List()
         local random_actors = utilities.choice(actors, 2)
