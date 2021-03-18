@@ -64,7 +64,7 @@ function RelationalConjunction:generate_story(world, knowledge, story)
             'yes_no',
             babi.Clause(world, truth_value, world:god(), actions.set,
                    random_actor2, 'is_in', location1),
-            (support1, support2)
+            support1
         ))
     end
     return story, knowledge
