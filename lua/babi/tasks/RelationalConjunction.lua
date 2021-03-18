@@ -62,9 +62,9 @@ function RelationalConjunction:generate_story(world, knowledge, story)
             --knowledge:current()[random_actor1]:get_value('is_in', true)
         story:append(babi.Question(
             'yes_no',
-            babi.Clause(world, true, world:god(), actions.set,
+            babi.Clause(world, truth_value, world:god(), actions.set,
                    random_actor2, 'is_in', location1),
-            support1
+            (support1, support2)
         ))
     end
     return story, knowledge
