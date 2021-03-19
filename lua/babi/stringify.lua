@@ -629,7 +629,8 @@ do
         local template
         local entity, _, location = unpack(self:clause().args.args)
         if entity.is_actor then
-            template = 'is %s in the same place as %s?' -- Marcus changed this
+            -- template = 'is %s in the same place as %s?' -- Marcus changed this
+            template = 'Are %s and %s in the same place as ?' -- or like this?
         else
             template = 'is the %s in the %s?'
         end
