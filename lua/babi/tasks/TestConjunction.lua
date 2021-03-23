@@ -74,8 +74,8 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         -- This is the test
         story:append(
             babi.Question(
-                'yes_no',
-                babi.Clause(world, affirmative, world:god(), actions.set,
+                'eval',
+                babi.Clause(world, true, world:god(), actions.set,
                        random_actor1, 'is_in', location1),
                 support1
             )
