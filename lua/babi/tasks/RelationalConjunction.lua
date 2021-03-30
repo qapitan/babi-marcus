@@ -72,8 +72,12 @@ function RelationalConjunction:generate_story(world, knowledge, story)
             )
         )
         
-        for key, value in pairs(support1) do
-            print('\t', key, value)
+        for index, data in ipairs(support1) do
+            print(index)
+        
+            for key, value in pairs(data) do
+                print('\t', key, value)
+            end
         end
     end
     return story, knowledge
