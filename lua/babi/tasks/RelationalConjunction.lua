@@ -6,6 +6,7 @@
 -- of patent rights can be found in the PATENTS file in the same directory.
 
 local List = require "pl.List"
+local Set = require 'pl.Set'
 
 local babi = require "babi"
 local actions = require "babi.actions"
