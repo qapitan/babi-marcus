@@ -44,8 +44,6 @@ function BasicCoreference:generate_story(world, knowledge, story)
             babi.Clause(world, true, world:god(), actions.set, clause.actor, "is_in", coref_clause.args[1]),
             Set {coref_clause}
         )
-        print(Set {coref_clause})
-        print(type(Set {coref_clause}))
     end
     return story, knowledge
 end
