@@ -50,18 +50,14 @@ function RelationalConjunction:generate_story(world, knowledge, story)
 
         -- Marcus code here
         -- Pick two random actors and ask if they are same place
-
-        --local random_actor1 = random_actors[math.random(4)]
-        --local random_actor2 = random_actors[math.random(4)]
-
-        local random_actor1 = random_actors[2]
-        local random_actor2 = random_actors[4]
+        local random_actor1 = random_actors[math.random(4)]
+        local random_actor2 = random_actors[math.random(4)]
 
         -- Stupid but working way of making sure the two actors are not
         -- the same
-        --while (random_actor2 == random_actor1) do
-            --random_actor2 = random_actors[math.random(4)]
-        --end
+        while (random_actor2 == random_actor1) do
+            random_actor2 = random_actors[math.random(4)]
+        end
 
         local location1, support1 = knowledge:current()[random_actor1]:get_value("is_in", true)
         local location2, support2 = knowledge:current()[random_actor2]:get_value("is_in", true)
