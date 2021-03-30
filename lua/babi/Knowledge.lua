@@ -151,6 +151,7 @@ do
             error('this property has multiple values')
         elseif #values == 1 then
             if return_support then
+                print(support[1])
                 return values[1], support[1]
             else
                 return values[1]
