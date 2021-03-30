@@ -11,15 +11,15 @@ local babi = require "babi"
 local actions = require "babi.actions"
 local utilities = require "babi.utilities"
 
-local CompoundCoreference = torch.class("babi.CompoundCoreference", "babi.Task", babi)
+local RelationalConj2 = torch.class("babi.RelationalConj2", "babi.Task", babi)
 
-function CompoundCoreference:new_world()
+function RelationalConj2:new_world()
     local world = babi.World()
     world:load((BABI_HOME or "") .. "tasks/worlds/world_basic.txt")
     return world
 end
 
-function CompoundCoreference:generate_story(world, knowledge, story)
+function RelationalConj2:generate_story(world, knowledge, story)
     -- Find the actors and the locations in the world
     local actors = world:get_actors()
     local locations = world:get_locations()
@@ -32,10 +32,14 @@ function CompoundCoreference:generate_story(world, knowledge, story)
         random_actors:extend(utilities.choice(actors, 2))
         local random_locations = utilities.choice(locations, 2)
 
-        clauses:append(babi.Clause(world, true, random_actors[1], actions.teleport, random_locations[1]))
-        clauses:append(babi.Clause(world, true, random_actors[2], actions.teleport, random_locations[1]))
-        clauses:append(babi.Clause(world, true, random_actors[3], actions.teleport, random_locations[2]))
-        clauses:append(babi.Clause(world, true, random_actors[4], actions.teleport, random_locations[2]))
+        clauses:append(babi.Clause(world, true, random_actors[1],
+            actions.teleport, random_locations[1]))
+        clauses:append(babi.Clause(world, true, random_actors[2],
+            actions.teleport, random_locations[1]))
+        clauses:append(babi.Clause(world, true, random_actors[1],
+            actions.teleport, random_locations[2]))
+        clauses:append(babi.Clause(world, true, random_actors[2],
+            actions.teleport, random_locations[2]))
 
         for _, clause in pairs(clauses) do
             clause:perform()
@@ -57,6 +61,14 @@ function CompoundCoreference:generate_story(world, knowledge, story)
             random_actor2 = random_actors[math.random(4)]
         end
 
+        local location1, support1 = knowledge:current()[random_actor1]:get_value("is_in", true)
+        local location2, support2 = knowledge:current()[random_actor2]:get_value("is_in", true)
+        -- Only get location?
+        --local location2 = knowledge:current()[random_actor2]:get_value("is_in", false)
+        local truth_value = (location1 == location2) -- Are the two actors same place?
+
+
+        --normal code here
         local value, support = knowledge:current()[random_actor1]:get_value("is_in", true)
 
         story:append(
@@ -70,10 +82,10 @@ function CompoundCoreference:generate_story(world, knowledge, story)
     return story, knowledge
 end
 
-CompoundCoreference.DEFAULT_CONFIG = {
+RelationalConj2.DEFAULT_CONFIG = {
     coreference = 1.0,
     compound = 1.0,
     conjunction = 1.0
 }
 
-return CompoundCoreference
+return RelationalConj2
