@@ -71,7 +71,6 @@ function Time:generate_story(world, knowledge, story)
                 Set{actor_movements[t], actor_movements[t + 1]}
             )
             require 'pl.pretty'.dump(actor_movements[t])
-            require 'pl.pretty'.dump(actor_movements)
         elseif not story[i] then
             local actor, time, location
             repeat
