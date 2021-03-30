@@ -29,6 +29,7 @@ function CompoundCoreference:generate_story(world, knowledge, story)
         -- Select two actors and two locations
         local clauses = List()
         local random_actors = utilities.choice(actors, 2)
+        random_actors:extend(utilities.choice(actors, 2))
         local random_locations = utilities.choice(locations, 2)
 
         clauses:append(babi.Clause(world, true, random_actors[1], actions.teleport, random_locations[1]))
