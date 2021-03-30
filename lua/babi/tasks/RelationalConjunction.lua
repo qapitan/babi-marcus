@@ -70,8 +70,8 @@ function RelationalConjunction:generate_story(world, knowledge, story)
                 support1
             )
         )
-        print(support1[0])
-        print(type(support1[0]))
+        print(support1[1])
+        print(type(support1[1]))
     end
     return story, knowledge
 end
