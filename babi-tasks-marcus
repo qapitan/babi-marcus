@@ -53,8 +53,7 @@ local task_names = {
     [19]='PathFinding',
     [20]='Motivations',
     [21]='RelationalConjunction',
-    [22]='TestConjunction',
-    [23]='RelationalConj2'
+    [22]='TestConjunction'
 }
 
 local generate_arg = {

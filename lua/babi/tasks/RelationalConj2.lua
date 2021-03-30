@@ -82,7 +82,6 @@ function RelationalConj2:generate_story(world, knowledge, story)
                 support
             )
         )
-        print(support)
     end
     return story, knowledge
 end
