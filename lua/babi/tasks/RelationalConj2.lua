@@ -73,6 +73,8 @@ function RelationalConj2:generate_story(world, knowledge, story)
         --normal code here
         local value, support = knowledge:current()[random_actor1]:get_value("is_in", true)
 
+        --support:append
+
         story:append(
             babi.Question(
                 "yes_no",

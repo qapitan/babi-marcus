@@ -184,6 +184,7 @@ do
                 if self:is_true(property, value.value) then
                     values:append(value.value)
                     support:append(value.support)
+                    print(value.support)
                 end
             end
         end
