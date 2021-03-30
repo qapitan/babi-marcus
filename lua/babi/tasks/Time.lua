@@ -70,6 +70,8 @@ function Time:generate_story(world, knowledge, story)
                 ),
                 Set{actor_movements[t], actor_movements[t + 1]}
             )
+            print(actor_movements[t])
+            print(type(actor_movements[t]))
         elseif not story[i] then
             local actor, time, location
             repeat
