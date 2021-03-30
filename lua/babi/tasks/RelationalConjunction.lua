@@ -49,7 +49,7 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         story:extend(clauses)
 
         -- Marcus code here
-        -- Pick two random actors and ask where he/she is
+        -- Pick two random actors and ask if they are same place
         local random_actor1 = random_actors[math.random(4)]
         local random_actor2 = random_actors[math.random(4)]
 
