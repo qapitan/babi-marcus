@@ -69,6 +69,8 @@ function WhereIsObject:generate_story(world, knowledge, story)
                         random_object, 'is_in', value.is_in),
                     support + holder_support
                 ))
+                print(support)
+                print(holder_support)
 
                 story_length = 0
                 num_questions = num_questions + 1
