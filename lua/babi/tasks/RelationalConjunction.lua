@@ -63,19 +63,14 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         -- local value, support =
         -- knowledge:current()[random_actor]:get_value('is_in', true)
         local truth_value = (location1 == location2) -- Are the two actors same place?
-
-        -- Find coreference clause
-        local coref_clause = babi.Clause.sample_valid(world, {true}, {clause.actor}, {actions.teleport}, locations)
-        coref_clause:perform()
-        story[i * 3 - 1] = coref_clause
-        knowledge:update(coref_clause)
-        
-        
+    
+        local clause1 = babi.Clause(world, true, random_actors[1], actions.teleport, random_locations[1])
+        local clause2 = clauses:append(babi.Clause(world, true, random_actors[2], actions.teleport, random_locations[1]))
         story:append(
             babi.Question(
                 "yes_no",
                 babi.Clause(world, truth_value, world:god(), actions.set, random_actor2, "is_in", random_actor1),
-                Set {coref_clause}
+                Set {clause1}
             )
         )
     end
