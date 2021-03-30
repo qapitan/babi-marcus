@@ -33,10 +33,14 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         random_actors:extend(utilities.choice(actors, 2))
         local random_locations = utilities.choice(locations, 2)
 
-        clauses:append(babi.Clause(world, true, random_actors[1], actions.teleport, random_locations[1]))
-        clauses:append(babi.Clause(world, true, random_actors[2], actions.teleport, random_locations[1]))
-        clauses:append(babi.Clause(world, true, random_actors[3], actions.teleport, random_locations[2]))
-        clauses:append(babi.Clause(world, true, random_actors[4], actions.teleport, random_locations[2]))
+        clauses:append(babi.Clause(world, true, random_actors[1],
+            actions.teleport, random_locations[1]))
+        clauses:append(babi.Clause(world, true, random_actors[2],
+            actions.teleport, random_locations[1]))
+        clauses:append(babi.Clause(world, true, random_actors[3],
+            actions.teleport, random_locations[2]))
+        clauses:append(babi.Clause(world, true, random_actors[4],
+            actions.teleport, random_locations[2]))
 
         for _, clause in pairs(clauses) do
             clause:perform()
@@ -58,8 +62,6 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         local location1, support1 = knowledge:current()[random_actor1]:get_value("is_in", true)
         local location2, support2 = knowledge:current()[random_actor2]:get_value("is_in", true)
 
-
-        --local _, holder_support = knowledge:current()[random_actor2.is_in]:get_value("is_in", true)
         -- Only get location?
         --local location2 = knowledge:current()[random_actor2]:get_value("is_in", false)
 
