@@ -67,7 +67,7 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         local support = List()
         print(support)
         support:append(support1)
-        support:append(support2)
+        --support:append(support2)
         print(support)
         
         story:append(
