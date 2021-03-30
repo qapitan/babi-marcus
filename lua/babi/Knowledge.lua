@@ -151,7 +151,6 @@ do
             error('this property has multiple values')
         elseif #values == 1 then
             if return_support then
-                print(support[1])
                 return values[1], support[1]
             else
                 return values[1]
@@ -185,6 +184,8 @@ do
                 if self:is_true(property, value.value) then
                     values:append(value.value)
                     support:append(value.support)
+                    print(value.support)
+                    print(support)
                 end
             end
         end
