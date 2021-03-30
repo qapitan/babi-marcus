@@ -72,8 +72,9 @@ function RelationalConjunction:generate_story(world, knowledge, story)
             )
         )
         
-        print(type(support1))
-        require 'pl.pretty'.dump(support1)
+        for key, value in pairs(support1) do
+            print('\t', key, value)
+        end
     end
     return story, knowledge
 end
