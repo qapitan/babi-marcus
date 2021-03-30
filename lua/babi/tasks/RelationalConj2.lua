@@ -58,6 +58,7 @@ function CompoundCoreference:generate_story(world, knowledge, story)
         end
 
         local value, support = knowledge:current()[random_actor1]:get_value("is_in", true)
+        print(support)
         story:append(
             babi.Question(
                 "eval",
