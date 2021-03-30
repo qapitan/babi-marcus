@@ -32,14 +32,19 @@ function RelationalConj2:generate_story(world, knowledge, story)
         random_actors:extend(utilities.choice(actors, 2))
         local random_locations = utilities.choice(locations, 2)
 
-        clauses:append(babi.Clause(world, true, random_actors[1],
-            actions.teleport, random_locations[1]))
-        clauses:append(babi.Clause(world, true, random_actors[2],
-            actions.teleport, random_locations[1]))
-        clauses:append(babi.Clause(world, true, random_actors[1],
-            actions.teleport, random_locations[2]))
-        clauses:append(babi.Clause(world, true, random_actors[2],
-            actions.teleport, random_locations[2]))
+        --clauses:append(babi.Clause(world, true, random_actors[1],
+        --    actions.teleport, random_locations[1]))
+        --clauses:append(babi.Clause(world, true, random_actors[2],
+        --    actions.teleport, random_locations[1]))
+        --clauses:append(babi.Clause(world, true, random_actors[1],
+        --    actions.teleport, random_locations[2]))
+        --clauses:append(babi.Clause(world, true, random_actors[2],
+        --    actions.teleport, random_locations[2]))
+
+        clauses:append(babi.Clause(world, true, random_actors[1], actions.teleport, random_locations[1]))
+        clauses:append(babi.Clause(world, true, random_actors[2], actions.teleport, random_locations[1]))
+        clauses:append(babi.Clause(world, true, random_actors[3], actions.teleport, random_locations[2]))
+        clauses:append(babi.Clause(world, true, random_actors[4], actions.teleport, random_locations[2]))
 
         for _, clause in pairs(clauses) do
             clause:perform()
