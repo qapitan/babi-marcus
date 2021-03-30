@@ -55,9 +55,10 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         end
 
         local location1, support1 = knowledge:current()[random_actor1]:get_value("is_in", true)
-        --local location2, support2 = knowledge:current()[random_actor2]:get_value("is_in", true)
+        local location2, support2 = knowledge:current()[random_actor2]:get_value("is_in", true)
         -- Only get location?
-        local location2 = knowledge:current()[random_actor2]:get_value("is_in", false)
+        --local location2 = knowledge:current()[random_actor2]:get_value("is_in", false)
+        local support3 = Set(story:slice(1, 2))
 
         -- local value, support =
         -- knowledge:current()[random_actor]:get_value('is_in', true)
