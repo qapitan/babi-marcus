@@ -184,12 +184,12 @@ do
                 if self:is_true(property, value.value) then
                     values:append(value.value)
                     support:append(value.support)
-                    print(value.support)
-                    print(support)
                 end
             end
         end
         if return_support then
+            print(support.value)
+            print(support)
             return values, support
         else
             return values
