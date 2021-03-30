@@ -67,6 +67,7 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         local support = List()
         print(support)
         support:append(support1)
+        print(support)
         
         story:append(
             babi.Question(
