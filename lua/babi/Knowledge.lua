@@ -188,8 +188,6 @@ do
             end
         end
         if return_support then
-            print(support.value)
-            print(support)
             return values, support
         else
             return values
