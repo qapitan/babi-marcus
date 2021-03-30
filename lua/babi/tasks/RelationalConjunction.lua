@@ -63,14 +63,7 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         -- knowledge:current()[random_actor]:get_value('is_in', true)
 
         local truth_value = (location1 == location2) -- Are the two actors same place?
-        print(support1)
-        for index, data in ipairs(support1) do
-            print(index)
-
-            for key, value in pairs(data) do
-                print("\t", key, value)
-            end
-        end
+        print(type(support1))
         story:append(
             babi.Question(
                 "yes_no",
