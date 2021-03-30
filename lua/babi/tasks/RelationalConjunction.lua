@@ -59,9 +59,9 @@ function RelationalConjunction:generate_story(world, knowledge, story)
 
         -- Stupid but working way of making sure the two actors are not
         -- the same
-        while (random_actor2 == random_actor1) do
-            random_actor2 = random_actors[math.random(4)]
-        end
+        --while (random_actor2 == random_actor1) do
+            --random_actor2 = random_actors[math.random(4)]
+        --end
 
         local location1, support1 = knowledge:current()[random_actor1]:get_value("is_in", true)
         local location2, support2 = knowledge:current()[random_actor2]:get_value("is_in", true)
