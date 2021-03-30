@@ -70,7 +70,7 @@ function RelationalConjunction:generate_story(world, knowledge, story)
                 support1
             )
         )
-        print(support1.actors)
+        print(support1)
     end
     return story, knowledge
 end
