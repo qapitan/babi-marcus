@@ -67,11 +67,11 @@ function RelationalConjunction:generate_story(world, knowledge, story)
             babi.Question(
                 "yes_no",
                 babi.Clause(world, truth_value, world:god(), actions.set, random_actor2, "is_in", random_actor1),
-                Set{support1[0], support2[0]}
+                support1
             )
         )
-        --print(support1)
-        --print(type(support1))
+        print(support1[0])
+        print(type(support1[0]))
     end
     return story, knowledge
 end
