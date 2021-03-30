@@ -51,6 +51,8 @@ function CompoundCoreference:generate_story(world, knowledge, story)
         local random_actor = random_actors[math.random(2)]
         local value, support =
             knowledge:current()[random_actor]:get_value('is_in', true)
+        --Fjern dette print
+        print(support)
         story:append(babi.Question(
             'eval',
             babi.Clause(world, true, world:god(), actions.set,
