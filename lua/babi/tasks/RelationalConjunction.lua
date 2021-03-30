@@ -66,6 +66,10 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         print(support1)
         for index, data in ipairs(support1) do
             print(index)
+
+            for key, value in pairs(data) do
+                print("\t", key, value)
+            end
         end
         story:append(
             babi.Question(
