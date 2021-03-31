@@ -72,7 +72,7 @@ function RelationalConjunction:generate_story(world, knowledge, story)
         -- This is to make support work, only needs two support points, if answer is false?
         -- I think this is right, even though it sounds weird
 
-        if truth_value then 
+        --if truth_value then 
                 story:append(
                 babi.Question(
                     "yes_no",
@@ -80,15 +80,15 @@ function RelationalConjunction:generate_story(world, knowledge, story)
                     support1
                 )
             )
-        else 
-                story:append(
-                    babi.Question(
-                        "yes_no",
-                        babi.Clause(world, truth_value, world:god(), actions.set, random_actor2, "is_in", random_actor1),
-                        support1 + support2
-                    )
-                )
-        end
+        --else 
+        --        story:append(
+        --            babi.Question(
+        --                "yes_no",
+        --                babi.Clause(world, truth_value, world:god(), actions.set, random_actor2, "is_in", random_actor1),
+        --                support1 + support2
+        --            )
+        --        )
+        --end
         
     end
     return story, knowledge
